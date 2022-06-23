@@ -12,10 +12,17 @@ num_list = [i for i in range(1, len(question_dict) + 1)]
 
 @bot.message_handler(commands=['start', 'new_game'])
 def start_welcome(message):
+    global num
+    global asked_questions
+    global game_score
+    global final_game_score
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = types.KeyboardButton('Летс гоу')
     markup.add(item1)
+    num = 0
     asked_questions = []
+    game_score = [0, 0]
+    final_game_score = 1
     bot.send_message(message.chat.id,
                      "Привет! Давай поиграем.", reply_markup=markup)
 
